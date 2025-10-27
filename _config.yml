@@ -1,0 +1,4 @@
+title: "Code Blog"
+description: "Everyday coding challenges"
+theme: minima
+# Jekyll expects posts in _posts and layouts/includes as below
