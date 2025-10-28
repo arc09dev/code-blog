@@ -1,0 +1,44 @@
+---
+layout: default
+title: "All Posts"
+---
+
+<nav class="pager">
+  {%- if paginator.previous_page -%}
+    <a href="{{ paginator.previous_page_path | relative_url }}">« Prev</a>
+  {%- else -%}
+    <span>« Prev</span>
+  {%- endif -%}
+
+  {%- for n in (1..paginator.total_pages) -%}
+    {%- if n == paginator.page -%}
+      <span class="active">{{ n }}</span>
+    {%- else -%}
+      {%- if n == 1 -%}
+        <a href="{{ '/all/' | relative_url }}">{{ n }}</a>
+      {%- else -%}
+        <a href="{{ '/all/page' | append: n | append: '/' | relative_url }}">{{ n }}</a>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if paginator.next_page -%}
+    <a href="{{ paginator.next_page_path | relative_url }}">Next »</a>
+  {%- else -%}
+    <span>Next »</span>
+  {%- endif -%}
+</nav>
+
+<section class="all-grid">
+  {%- assign count = paginator.posts | size -%}
+  {%- for post in paginator.posts -%}
+    <div class="all-card"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></div>
+  {%- endfor -%}
+
+  {%- assign remaining = 20 | minus: count -%}
+  {%- if remaining > 0 -%}
+    {%- for i in (1..remaining) -%}
+      <div class="all-card placeholder">&nbsp;</div>
+    {%- endfor -%}
+  {%- endif -%}
+</section>
