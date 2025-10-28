@@ -1,7 +1,9 @@
 <header class="site-header">
-  <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-  <nav>
-    <a href="{{ '/' | relative_url }}">Home</a>
-    <a href="{{ '/about.html' | relative_url }}">About</a>
-  </nav>
+  <div class="nav-wrap">
+    <div class="brand"><a href="{{ '/' | relative_url }}">Code Blog</a></div>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/all/' | relative_url }}">All Posts</a>
+    </nav>
+  </div>
 </header>
