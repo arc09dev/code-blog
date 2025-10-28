@@ -21,9 +21,12 @@ jobs:
       - name: Install gems
         run: bundle install
       - name: Build Jekyll
-        run: bundle exec jekyll build --destination _site
+        run: bundle exec jekyll build --destination _site --verbose
         env:
           JEKYLL_ENV: production
+          # Provide GitHub auth + repo NWO to github-metadata plugin
+          JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PAGES_REPO_NWO: arc09dev/code-blog
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
