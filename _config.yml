@@ -1,12 +1,1 @@
-title: "Code Blog"
-description: "Everyday coding challenges"
-theme: minima
-# Jekyll expects posts in _posts and layouts/includes as below # Pagination (ensure jekyll-paginate is enabled)
-plugins:
-  - jekyll-paginate
-
-paginate: 20
-paginate_path: "/all/page:num/"
-
-# Site title for templates
-title: "Code Blog" 
+title: Code Blog description: "Everyday coding challenges" theme: minima # Jekyll expects posts in _posts and layouts/includes as below # Pagination (ensure jekyll-paginate is enabled) plugins:   - jekyll-paginate  paginate: 20 paginate_path: "/all/page:num/"  # Site title for templates title: "Code Blog"  repository: arc09dev/code-blog url: https://arc09dev.github.io baseurl: /code-blog 
