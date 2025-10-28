@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<h1>Tag: {{ page.tag }}</h1>
+<div class="tag-grid">
+  {% assign tagged = site.tags[page.tag] | sort: 'date' | reverse %}
+  {% for post in tagged %}
+    <div class="tag-card">
+      {% if post.image %}
+        <a href="{{ post.url | relative_url }}">
+          <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}">
+        </a>
+      {% endif %}
+      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+      <p class="tmeta">{{ post.date | date: '%b %-d, %Y' }}{% if post.blog_number %} • #{{ post.blog_number }}{% endif %}</p>
+    </div>
+  {% endfor %}
+</div>
