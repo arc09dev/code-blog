@@ -1,0 +1,66 @@
+---
+layout: default
+title: "Home"
+---
+
+{%- assign latest = site.posts | first -%}
+
+<section class="home-hero">
+  {%- if latest -%}
+  <article class="card">
+    {%- if latest.image -%}
+      <img src="{{ latest.image | relative_url }}" alt="{{ latest.title | escape }}">
+    {%- endif -%}
+    <div class="pad">
+      <h2 class="title"><a href="{{ latest.url | relative_url }}">{{ latest.title }}</a></h2>
+      <p class="meta">{{ latest.date | date: "%b %-d, %Y" }}</p>
+      <p class="excerpt">
+        {{ latest.content | strip_html | truncatewords: 60 }}
+        <a href="{{ latest.url | relative_url }}">Continue reading →</a>
+      </p>
+    </div>
+  </article>
+  {%- endif -%}
+</section>
+
+<section class="home-main">
+  <div>
+    <h3>Recent posts</h3>
+    <div class="recent-grid">
+      {%- assign shown = 0 -%}
+      {%- for post in site.posts offset:1 limit:4 -%}
+        <article class="card">
+          {%- if post.image -%}
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title | escape }}">
+          {%- endif -%}
+          <div class="pad">
+            <h4><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h4>
+          </div>
+        </article>
+        {%- assign shown = shown | plus: 1 -%}
+      {%- endfor -%}
+
+      {%- assign remaining = 4 | minus: shown -%}
+      {%- if remaining > 0 -%}
+        {%- for i in (1..remaining) -%}
+          <article class="card placeholder">
+            <div class="pad"><h4>Coming soon</h4></div>
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <h4>Explore more</h4>
+    {%- comment -%} Random sample is chosen at build time, not per page view {%- endcomment -%}
+    {%- assign random_posts = site.posts | sample: 12 -%}
+    <div class="small-links">
+      {%- for post in random_posts -%}
+        <div class="small-card">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </div>
+      {%- endfor -%}
+    </div>
+  </aside>
+</section>
