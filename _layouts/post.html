@@ -4,6 +4,21 @@ layout: default
 
 <article class="post">
   <h1>{{ page.title }}</h1>
-  <p class="meta">{{ page.date | date: '%b %-d, %Y' }}</p>
-  {{ content }}
+  <p class="meta">{{ page.date | date: '%b %-d, %Y' }}{% if page.blog_number %} • #{{ page.blog_number }}{% endif %}</p>
+
+  {% if page.tags and page.tags.size > 0 %}
+  <div class="tag-row">
+    {% for tag in page.tags %}
+      <a class="tag-chip" href="{{ '/tag/' | append: tag | append: '/' | relative_url }}">#{{ tag }}</a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if page.image %}
+    <img class="hero" src="{{ page.image | relative_url }}" alt="{{ page.title | escape }}">
+  {% endif %}
+
+  <div class="content">
+    {{ content }}
+  </div>
 </article>
