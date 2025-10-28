@@ -3,7 +3,8 @@ description: "Everyday coding challenges"
 theme: minima 
 # Jekyll expects posts in _posts and layouts/includes as below 
 # Pagination (ensure jekyll-paginate is enabled) 
-plugins:   - jekyll-paginate  
+plugins:   
+- jekyll-paginate  
 paginate: 20 
 paginate_path: "/all/page:num/"  
 # Site title for templates 
